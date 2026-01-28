@@ -1,0 +1,31 @@
+﻿@model List<BibleVerseSearcher.Models.SearchResultViewModel>
+@{
+    ViewData["Title"] = "Search Results";
+}
+
+<div>
+    <a style="background-color: royalblue; padding:5px; color:white;" asp-controller="Home" asp-action="Index">Go back to Home</a>
+</div>
+
+<h1>Search Results</h1>
+
+@if (Model != null && Model.Any())
+{
+    <ul>
+        @foreach (var item in Model)
+        {
+            <li>
+                @item.BookName, Chapter @item.Verse.c, Verse @item.Verse.v: @item.Verse.t
+                <a asp-controller="Home" asp-action="Details" asp-route-id="@item.Verse.id">Details</a>
+            </li>
+        }
+    </ul>
+}
+else
+{
+    <p>No results found.</p>
+}
+
+<div>
+    <a style="background-color: royalblue; padding:5px; color:white;" asp-controller="Home" asp-action="Index">Go back to Home</a>
+</div>

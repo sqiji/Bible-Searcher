@@ -1,0 +1,25 @@
+﻿@model List<BibleVerseSearcher.Models.ChapterVerseViewModel>
+@{
+    ViewData["Title"] = "Chapter Verses";
+}
+
+<div>
+    <a style="background-color: royalblue; padding:5px; color:white;" asp-controller="Home" asp-action="Index">Go back to Home</a>
+</div>
+
+<h1>@ViewBag.BookName, Chapter @ViewBag.ChapterNumber</h1>
+
+<ul>
+
+    @foreach (var item in Model)
+    {
+        <li>
+            @item.BookName, Chapter @item.Verse.c, Verse @item.Verse.v: @item.Verse.t
+            <a asp-controller="Home" asp-action="Details" asp-route-id="@item.Verse.id">Details</a>
+        </li>
+    }
+</ul>
+
+<div>
+    <a style="background-color: royalblue; padding:5px; color:white;" asp-controller="Home" asp-action="Index">Go back to Home</a>
+</div>

@@ -1,0 +1,87 @@
+﻿@{
+    ViewData["Title"] = "Bible Search";
+    var books = (List<BibleVerseSearcher.Models.KeyEnglish>)ViewBag.Books;
+}
+
+<h1>Bible Search</h1>
+
+<form asp-action="SearchResults" method="get">
+    <label>Search Term:</label>
+    <input type="text" name="searchTerm" />
+
+    <label id="oldTestamentLabel">
+        <input type="checkbox" name="searchOldTestament" value="true" id="oldTestament" /> Old Testament
+    </label>
+    <label id="newTestamentLabel">
+        <input type="checkbox" name="searchNewTestament" value="true" id="newTestament" /> New Testament
+    </label>
+
+    <button type="submit">Search</button>
+</form>
+
+<h2>Find by Reference</h2>
+
+<form asp-action="ReferenceResults" method="get">
+    <label>Select Book:</label>
+    <select name="bookNumber" id="bookNumber">
+        @foreach (var book in books)
+        {
+            <option value="@book.b">@book.n</option>
+        }
+    </select>
+
+    <label>Select Chapter:</label>
+    <select name="chapterNumber" id="chapterNumber">
+    </select>
+
+    <button type="submit">Go</button>
+</form> 
+
+<script>
+    const oldTestamentCheckbox = document.getElementById('oldTestament');
+    const newTestamentCheckbox = document.getElementById('newTestament');
+
+    oldTestamentCheckbox.addEventListener('change', function() {
+        if (this.checked) {
+            newTestamentCheckbox.disabled = true;
+            document.getElementById('newTestamentLabel').style.color = 'gray';
+        } else {
+            newTestamentCheckbox.disabled = false;
+            document.getElementById('newTestamentLabel').style.color = 'black';
+        }
+    });
+
+    newTestamentCheckbox.addEventListener('change', function() {
+        if (this.checked) {
+            oldTestamentCheckbox.disabled = true;
+            document.getElementById('oldTestamentLabel').style.color = 'gray';
+        } else {
+            oldTestamentCheckbox.disabled = false;
+            document.getElementById('oldTestamentLabel').style.color = 'black';
+            
+        }
+    });
+
+
+    document.getElementById('bookNumber').addEventListener('change', function() {
+        var bookNumber = parseInt(this.value);
+        var chapterSelect = document.getElementById('chapterNumber');
+        chapterSelect.innerHTML = '';
+
+        fetch('/Home/GetChapterCount?bookNumber=' + bookNumber)  //  Adjust the URL if your routing is different
+            .then(response => response.text())  //  Or response.json() if you return JSON
+            .then(chapterCount => {
+                let chapters = parseInt(chapterCount);
+
+                for (let i = 1; i <= chapters; i++) {
+                    let option = document.createElement('option');
+                    option.value = i;
+                    option.text = i;
+                    chapterSelect.add(option);
+                }
+            })
+            .catch(error => console.error('Error fetching chapter count:', error));
+    });
+
+    document.getElementById('bookNumber').dispatchEvent(new Event('change'));
+</script>

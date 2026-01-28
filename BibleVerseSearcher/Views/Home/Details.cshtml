@@ -1,0 +1,39 @@
+﻿@model BibleVerseSearcher.Models.TWeb
+@{
+    ViewData["Title"] = "Verse Details";
+    var notes = (List<BibleVerseSearcher.Models.VerseNote>)ViewBag.Notes;
+    var bookName = ViewBag.BookName as string;
+}
+
+<div>
+    <a style="background-color: royalblue; padding:5px; color:white;" asp-controller="Home" asp-action="Index">Go back to Home</a>
+</div>
+
+<h1>@bookName, Chapter @Model.c, Verse @Model.v</h1>
+<p>@Model.t</p>
+
+<h2>Notes</h2>
+@if (notes != null && notes.Any())
+{
+    <ul>
+        @foreach (var note in notes)
+        {
+            <li>@note.NoteText - @note.CreatedDate</li>
+        }
+    </ul>
+}
+else
+{
+    <p>No notes added yet.</p>
+}
+
+<h3>Add Note</h3>
+<form asp-action="AddNote" method="post">
+    <input type="hidden" name="verseId" value="@Model.id" />
+    <textarea name="noteText" rows="4" cols="50"></textarea>
+    <button type="submit">Add Note</button>
+</form>
+
+<div >
+    <a style="background-color: royalblue; padding:5px; color:white;" asp-controller="Home" asp-action="Index">Go back to Home</a>
+</div>
