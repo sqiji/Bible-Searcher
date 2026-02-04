@@ -74,7 +74,8 @@ The `BibleApplication` database includes three core tables:
 ---
 
 ## 9. UML Diagrams
-* **Models:** `BookChapter`, `VerseNote`, `TWeb`, `KeyEnglish`, `SearchResultViewModel`, `ChapterVerseViewModel`.
+* **Controller:** `HomeController`.
+* **Models:** `BookChapter`, `VerseNote`, `TWeb`, `KeyEnglish`, `SearchResultViewModel`, `ChapterVerseViewModel`, and `ErrorViewModel`.
 * **Data Access:** `TWebDAO`, `KeyEnglishDAO`, `VerseNoteDAO` and their respective Interfaces.
 
 [UML](/Documents/UML.jpg).
