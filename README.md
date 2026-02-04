@@ -1,33 +1,42 @@
 
 # Bible Searcher Web Application
 
-## 1. Project Overview
-The **Bible Searcher App** is a robust web application designed to facilitate Bible study through advanced search and personal reflection tools. Built with an **N-layer architecture**, it allows users to navigate the text via keyword searches or specific book/chapter references.
+## 1. Project Overview:
 
-## 2. Hardware and Software Technologies
-* **Framework:** ASP.NET Core MVC (N-Layered).
-* **Language:** C#.
-* **Frontend:** Razor Pages (HTML), CSS, and JavaScript.
+The **Bible Searcher App** is a web-based application that allows users to search and read Bible verses efficiently. Users can search by keyword or phrase across the entire Bible, restrict searches to the Old Testament or New Testament, or browse by selecting a specific book and chapter. The application also allows users to add, update, and view personal notes for individual verses.
+The project follows an **N-Layer Architecture** using **ASP.NET Core MVC**, with a **MySQL** relational database for persistent storage and a **JSON file** to manage Bible book-to-chapter mappings.
+
+---
+
+## 2. Technologies Used:
+
+* **Program Language:** C#.
+* **Framework:** ASP.NET Core MVC.
+* **Frontend:** Razor Pages (HTML, CSS, and JavaScript).
+* **Backend Architecture:** N-Layer Architecture (Presentation, Business Logic, Data Access).
 * **Database:** MySQL.
+* **Data Access Pattern**: DAO (Data Access Object).
 * **Data Handling:** JSON for dynamic chapter mapping (e.g., mapping 28 chapters to Matthew vs. 4 to Ruth).
 * **Development Tool:** Visual Studio 2022 (Solution Explorer structure).
 
 ---
 
-## 3. Logical Solution Design
+## 3. Logical Solution Design:
+
 The application follows a strict separation of concerns through three logical layers:
 * **Presentation Layer:** Contains Razor pages (`.cshtml`) for user interaction, including Search, Results, and Details views.
 * **Business Logic Layer:** Managed by the `HomeController.cs` to handle request routing and user input processing.
-* **Data Access Layer (DAL):** Consists of Data Access Objects (DAO) and Interfaces (e.g., `ITWebDAO`, `IVerseNoteDAO`) to abstract database operations.
-
+* **Data Access Layer:** Consists of Data Access Objects (DAO) and Interfaces (e.g., `ITWebDAO`, `IVerseNoteDAO`) to abstract database operations.
+* **Data Sources:** MySQL Database include three tabels Bible verses, Bible chapters, and notes. Using JSON file to mapping book to chapter.
+  
 [Logical Solution](/Documents/LogicalSolution.jpg).
 
 ---
 
 ## 4. Physical Solution Design
-* **Web Server:** Processes C# logic and serves dynamic content via the ASP.NET Core runtime.
+* **Web Server:** Processes C# logic and serves dynamic content via the ASP.NET Core MVC runtime.
 * **File System:** Stores the `bookChapters.json` configuration file within the `wwwroot/json` directory.
-* **Database Server:** A MySQL instance hosting the `BibleApplication` database, containing the primary data tables.
+* **Database Server:** Application communicates with MySQL database server.
 
 [Physical Solution](/Documents/PhysicalSolution.jpg).
 
@@ -84,3 +93,9 @@ The `BibleApplication` database includes three core tables:
 
 ## 10. Conclusion
 This project demonstrates the ability to build a data-driven web application using professional software engineering patterns. By utilizing an N-layer architecture and MySQL integration, the Bible Searcher provides a scalable solution for text-based searching and personal data management.
+
+---
+
+**Author: Soran Qiji
+Course: CST-350 (C sharp)
+Project: Bible Searcher App**
