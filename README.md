@@ -20,7 +20,7 @@ The application follows a strict separation of concerns through three logical la
 * **Business Logic Layer:** Managed by the `HomeController.cs` to handle request routing and user input processing.
 * **Data Access Layer (DAL):** Consists of Data Access Objects (DAO) and Interfaces (e.g., `ITWebDAO`, `IVerseNoteDAO`) to abstract database operations.
 
-
+[Logical Solution](/Documents/LogicalSolution.jpg).
 
 ---
 
@@ -28,6 +28,8 @@ The application follows a strict separation of concerns through three logical la
 * **Web Server:** Processes C# logic and serves dynamic content via the ASP.NET Core runtime.
 * **File System:** Stores the `bookChapters.json` configuration file within the `wwwroot/json` directory.
 * **Database Server:** A MySQL instance hosting the `BibleApplication` database, containing the primary data tables.
+
+[Physical Solution](/Documents/PhysicalSolution.jpg).
 
 ---
 
@@ -44,7 +46,7 @@ The `BibleApplication` database includes three core tables:
 2.  **`dbo.t_web`**: Stores the Bible text (World English Bible).
 3.  **`dbo.VerseNotes`**: Stores user-created notes linked to specific verses with timestamps.
 
-
+[ER Diagram](/Documents/ER.jpg).
 
 ---
 
@@ -56,6 +58,8 @@ The `BibleApplication` database includes three core tables:
 4.  User enters text in the "Add Note" box and submits.
 5.  The system saves the note to MySQL and refreshes the list with a timestamp.
 
+[Flowchart](/Documents/FlowChart.jpg).
+
 ---
 
 ## 8. Sitemap Diagram
@@ -65,13 +69,15 @@ The `BibleApplication` database includes three core tables:
 * **Verse Details:** `Details.cshtml` (Note management for a single verse).
 * **Privacy:** `Privacy.cshtml`.
 
+[Sitemap](/Documents/Sitemap.jpg).
+
 ---
 
 ## 9. UML Diagrams
 * **Models:** `BookChapter`, `VerseNote`, `TWeb`, `KeyEnglish`, `SearchResultViewModel`, `ChapterVerseViewModel`.
 * **Data Access:** `TWebDAO`, `KeyEnglishDAO`, `VerseNoteDAO` and their respective Interfaces.
 
-
+[UML](/Documents/UML.jpg).
 
 ---
 
