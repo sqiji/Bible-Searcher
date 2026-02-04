@@ -19,8 +19,8 @@ The application follows a strict separation of concerns through three logical la
 * **Presentation Layer:** Contains Razor pages (`.cshtml`) for user interaction, including Search, Results, and Details views.
 * **Business Logic Layer:** Managed by the `HomeController.cs` to handle request routing and user input processing.
 * **Data Access Layer (DAL):** Consists of Data Access Objects (DAO) and Interfaces (e.g., `ITWebDAO`, `IVerseNoteDAO`) to abstract database operations.
-[Logical Solution](/Documents/LogicalSolution.jpg).
 
+[Logical Solution](/Documents/LogicalSolution.jpg).
 
 ---
 
