@@ -97,6 +97,6 @@ This project demonstrates the ability to build a data-driven web application usi
 ---
 
 **Author: Soran Qiji\
-Course: CST-350 (C sharp)\
+Course: C sharp\
 Project: Bible Searcher App\
 Grand Canyon University**
